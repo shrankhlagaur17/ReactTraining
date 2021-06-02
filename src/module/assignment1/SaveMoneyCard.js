@@ -18,6 +18,9 @@ export class SaveMoneyCard extends Component {
 						'Start your 14 days of free plan, you can always upgrade it or stay with the Lite version for free.'
 					}
 				</p>
+				<div className="imageContainer">
+					<img src="./Robot.png" alt="Robot" />
+				</div>
 			</div>
 		);
 	}
