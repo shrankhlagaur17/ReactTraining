@@ -1,0 +1,305 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    background-color: var(--off-white);
+}
+
+:root {
+    --gray: rgb(220 227 227);
+    --lightGray: rgb(220 227 227 / 45%);
+    --darkGray: gray;
+    --white: white;
+    --primary: rgb(67 67 192);
+    --black: #000000;
+    --lightBlack: #000000a8;
+}
+
+/* Main CSS */
+
+
+/* Index CSS */
+.assignment {
+    background-color: var(--white);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainContainer {
+    background-color: var(--gray);
+    height: 100%;
+    width: 100%;
+    padding: 80px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+.innerContainer {
+    border-radius: 35px;
+    display: flex;
+    padding: 30px;
+    justify-content: center;
+    box-shadow: 13px 70px 93px -70px;
+    background-color: var(--white);
+}
+.cardContainer {
+    display: flex;
+}
+
+/* Header CSS */
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 0 30px;
+    color: var(--black);
+}
+.headerContainer .h2Container {
+    width: 300px;
+}
+.headerContainer .h2tag{
+    font-size: 40px;
+    margin: 15px 0;
+}
+.headerContainer .h2SpanTag {
+    font-weight: 800;
+}
+.headerContainer .descriptionContainer {
+    width: 150px;
+}
+.headerContainer .description {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+}
+.headerContainer .contactUs {
+    color: var(--primary)
+}
+
+/* Save Money Card CSS */
+.saveMoneyCardContainer {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 30px;
+    width: 40%;
+    border-radius: 10px;
+}
+.saveMoneyCardContainer .h1tag{
+    font-size: 40px;
+    margin: 10px 0;
+}
+.saveMoneyCardContainer .h1SpanTag {
+    font-weight: 800;
+}
+.saveMoneyCardContainer .description {
+    margin: 30px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* Lite Card CSS */
+.liteCardContainer {
+    padding: 30px 0 0 30px;
+    width: 100%;
+}
+.liteCard {
+    background-color: var(--lightGray);
+    color: var(--black);
+    border-radius: 10px;
+    padding: 30px;
+    height: 100%;
+}
+.liteCardContainer .headingContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.liteCardContainer .h3Lite {
+    font-size: 32px;
+    margin: 10px 0;
+    font-weight: 800;
+}
+.liteCardContainer .dashSpan {
+    color: var(--primary);
+    font-weight: 800;
+}
+.liteCardContainer .innerHeadingContainer {
+    text-align: right;
+}
+.liteCardContainer .h3Free {
+    font-size: 32px;
+    margin: 10px 0;
+}
+.liteCardContainer .caption {
+    font-size: 14px;
+    color: var(--darkGray);
+}
+.liteCardContainer .planHeading {
+    font-weight: 800;
+    font-size: 14px;
+    margin: 20px 0;
+}
+.liteCardContainer .tickSpan {
+    color: var(--primary);
+    margin: 0 20px 0 0;
+    font-size: 16px;
+}
+.liteCardContainer .pointsContainer{
+    display: flex;
+    margin: 20px 0;
+}
+.liteCardContainer .liteCardPoints {
+    font-size: 14px;
+    color: var(--lightBlack);
+    /* margin: 20px 0; */
+    line-height: 1.25;
+}
+.liteCardContainer .buttonContainer {
+    padding: 72px 10px 0 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.liteCardContainer .button {
+    height: 40px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+}
+.liteCardContainer .buttonHeading {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+
+/* Pro Card CSS */
+.proCardContainer {
+    padding: 30px 0 0 30px;
+    width: 100%;
+}
+.proCard {
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 30px;
+    height: 100%;
+}
+.proCardContainer .headingContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.proCardContainer .h3Pro {
+    font-size: 32px;
+    margin: 10px 0;
+    font-weight: 800;
+}
+.proCardContainer .dashSpan {
+    font-weight: 800;
+}
+.proCardContainer .innerHeadingContainer {
+    text-align: right;
+}
+.proCardContainer .h3Free {
+    font-size: 32px;
+    margin: 10px 0;
+}
+.proCardContainer .caption {
+    font-size: 14px;
+}
+.proCardContainer .planHeading {
+    font-weight: 800;
+    font-size: 14px;
+    margin: 20px 0;
+}
+.proCardContainer .pointsContainer{
+    display: flex;
+    margin: 12px 0;
+}
+.proCardContainer .tickSpan {
+    margin: 0 20px 0 0;
+    font-size: 16px;
+    color: var(--white);
+}
+.proCardContainer .proCardPoints {
+    font-size: 14px;
+    line-height: 1.5;
+    /* margin: 20px 0; */
+}
+.proCardContainer .buttonContainer {
+    padding: 40px 10px 0 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.proCardContainer .button {
+    height: 40px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--white);
+    color: var(--black);
+    border: none;
+}
+.proCardContainer .buttonHeading {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 20px 0;
+}
