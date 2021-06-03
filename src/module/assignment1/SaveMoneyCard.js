@@ -19,7 +19,7 @@ export class SaveMoneyCard extends Component {
 					}
 				</p>
 				<div className="imageContainer">
-					<img src="./Robot.png" alt="Robot" />
+					<img src={'./image/Robot.png'} alt={'Robot'} />
 				</div>
 			</div>
 		);
