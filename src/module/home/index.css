@@ -1,11 +1,37 @@
 .homeContainer {
     background-color: gray;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vw;
+    flex-direction: column;
 }
 
 .h1tag {
     color: red;
 }
 
-#h2tag {
-    color: pink;
+.itemContainer {
+    width: auto;
+    padding:10px;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid red;
+}
+
+.itemContainer h3 {
+    color: #000;
+    font-size: 22px;
+
+}
+
+.itemContainer button {
+    background-color: green;
+}
+
+.redClrTxt {
+    background-color: grey;
 }

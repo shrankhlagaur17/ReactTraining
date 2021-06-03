@@ -15,7 +15,7 @@ export class index extends Component {
 						<div>
 							<Header />
 							<div className={'cardContainer'}>
-								<LiteCard />
+								<LiteCard heading={'lite'} />
 								<ProCard />
 							</div>
 						</div>

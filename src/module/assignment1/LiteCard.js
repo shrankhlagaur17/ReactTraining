@@ -8,7 +8,7 @@ export class LiteCard extends Component {
 				<div className={'liteCard'}>
 					<div className={'headingContainer'}>
 						<div>
-							<h3 className={'h3Lite'}>{'Lite'}</h3>
+							<h3 className={'h3Lite'}>{this.props.heading}</h3>
 							<span className={'dashSpan'}>&mdash;</span>
 						</div>
 						<div className={'innerHeadingContainer'}>
