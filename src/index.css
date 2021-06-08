@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* SelectPicker Border CSS */
+.MuiOutlinedInput-notchedOutline {
+  border-color: #f7fcff! important;
+}
