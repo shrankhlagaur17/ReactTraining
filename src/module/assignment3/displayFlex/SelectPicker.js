@@ -5,56 +5,28 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { FormControl, Avatar } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
 
-
 const useStyles = makeStyles((theme) => ({
+	formControl1: {
+		width: '100%',
+		margin: '0 15px 0 0'
+	},
 	formControl: {
-		margin: theme.spacing(1),
-		minWidth: 80,
-		'& .MuiInputBase-root.MuiSelect-select:focus': {
-			backgroundColor: '#e8f4fd !important'
-		}
-	},
-	selectEmpty: {
-		marginTop: theme.spacing(2)
-	},
-	small: {
-		width: theme.spacing(3),
-		height: theme.spacing(3),
-		margin: theme.spacing(1)
-	},
-	large: {
-		width: theme.spacing(8),
-		height: theme.spacing(8)
+		width: '100%'
 	},
 	badge: {
 		display: 'flex'
 	},
-	titleLanguage: {
-		marginTop: '0.70rem',
-		fontFamily: 'AkkuratPro',
-		fontSize: '12px',
-		fontWeight: 'bold',
-		lineHeight: 1.67,
-		letterSpacing: '1px',
-		color: '#3a4e6f'
+	label: {
+		color: 'var(--textGray)',
+		display: 'flex'
 	},
-	FooterTitleLang: {
-		marginTop: '0.10rem',
-		fontFamily: 'AkkuratPro',
-		fontSize: '12px',
-		fontWeight: 'bold',
-		lineHeight: 1.67,
-		letterSpacing: '1px',
-		color: '#3a4e6f'
+	small: {
+		width: theme.spacing(3),
+		height: theme.spacing(3),
+		margin: '0 10px'
 	},
-	titleCurrency: {
-		fontFamily: 'CircularStd',
-		fontSize: '26px',
-		lineHeight: 1.38,
-		color: '#3a4e6f',
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '1rem'
-		}
+	icon: {
+		margin: '3px 0 0 10px'
 	}
 }));
 
@@ -62,42 +34,26 @@ export default function SimpleSelect(props) {
 	const classes = useStyles();
 
 	return (
-		<div>
-			<FormControl variant="outlined" className={classes.formControl}>
-				<InputLabel id="demo-simple-select-outlined-label">
-					<small>{props.title}</small>
-				</InputLabel>
-				<Select
-					labelId="demo-simple-select-outlined-label"
-					id="demo-simple-select-outlined"
-					value={props.defaultValue}
-					onChange={(e) => props.handleChange1(e)}
-					label=""
-				>
-					{props.picker.map((item) => (
-						<MenuItem value={item.id} key={item.id}>
-							<div className={`${classes.badge} `}>
-								{props.isCustom ? (
-									<Avatar
-										alt="flag"
-										src={item.image !== undefined ? item.image : ''}
-										className={classes.small}
-									/>
-								) : (
-									''
-								)}
-								{props.isClass ? (
-									<small className={props.isFooter ? classes.FooterTitleLang : classes.titleLanguage}>
-										{item.title}
-									</small>
-								) : (
-									<strong className={classes.titleCurrency}>{item.title}</strong>
-								)}
-							</div>
-						</MenuItem>
-					))}
-				</Select>
-			</FormControl>
-		</div>
+		<FormControl variant="outlined" className={props.isLeft ? classes.formControl1 : classes.formControl}>
+			<InputLabel id="demo-simple-select-outlined-label" className={classes.label}>
+				{props.isCustom ? <img src={props.icon} alt="icon" /> : ''}
+				<div className={classes.icon}>{props.label}</div>
+			</InputLabel>
+			<Select
+				labelId="demo-simple-select-outlined-label"
+				id="demo-simple-select-outlined"
+				value={props.defaultValue}
+				onChange={props.handleChange1}
+				label={props.label}
+			>
+				{props.picker.map((item) => (
+					<MenuItem value={item.id}>
+						{props.isCustom ? <Avatar src={item.image} className={classes.small} /> : ''}
+
+						{item.title}
+					</MenuItem>
+				))}
+			</Select>
+		</FormControl>
 	);
 }

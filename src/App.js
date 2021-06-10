@@ -1,12 +1,10 @@
 import React from 'react';
-import DisplayGrid from './module/assignment3/displayGrid';
-import DisplayFlex from './module/assignment3/displayFlex';
-
+import Assignment4 from './module/assignment4';
 class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<DisplayFlex />
+				<Assignment4 />
 			</div>
 		);
 	}

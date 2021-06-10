@@ -13,6 +13,18 @@ code {
 }
 
 /* SelectPicker Border CSS */
-.MuiOutlinedInput-notchedOutline {
+/* .MuiOutlinedInput-notchedOutline {
   border-color: #f7fcff! important;
+} */
+
+/* colors */
+:root {
+  --white: white;
+  --black: #000000;
+  --secondary: #388538;
+  --textGray: #424c5d;
+  --primary: #1565c0;
+  --hoverPrimary: #2b4563;
+  --bg: #F4F6F8;
+
 }
