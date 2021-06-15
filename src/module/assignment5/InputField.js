@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
 		}
 	},
 	emailInput: {
-		width: '95%',
-		height: '50px',
+		// width: '95%',
+		// height: '50px',
 		font: `${theme.typography.fontWeightMedium} ${theme.spacing(2)}px "Helvetica"`,
 		lineHeight: 1.78,
 		color: 'var(--gray)!important',
@@ -82,7 +82,6 @@ const InputField = (props) => {
 			<div className={classes.container}>
 				<label htmlFor="email" className={classes.label}>
 					{props.label}
-					<span className={classes.required}> *</span>
 				</label>
 
 				<Field

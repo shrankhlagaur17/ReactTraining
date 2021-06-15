@@ -1,10 +1,18 @@
 import React from 'react';
-import Router from './router/index';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import PublicRoutes from './router/PublicRoute';
+import Index from './module/assignment6/Index';
+import EditScreen from './module/assignment6/EditScreen';
 
-class App extends React.Component {
-	render() {
-		return <Router />;
-	}
-}
+const App = () => {
+	return (
+		<BrowserRouter>
+			<Switch>
+				<PublicRoutes exact path="/" component={Index} />
+				<PublicRoutes exact path="/edit/:item" component={EditScreen} />;
+			</Switch>
+		</BrowserRouter>
+	);
+};
 
 export default App;

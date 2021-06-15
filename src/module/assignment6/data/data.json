@@ -1,0 +1,36 @@
+{
+    "key1" : "Hello",
+    "key2" : "World",
+    "response" : {
+        "msg" : "Success",
+        "result": 200
+    },
+    "error":{
+        "msg" : "You dont have any errors",
+        "result": 200
+    },
+    "api-routes": [
+        {
+            "name": "Fetch User Details",
+            "path" : "/user/<user-id>",
+            "method" : "GET"
+        },
+        {
+            "name": "Update User Details",
+            "path" : "/user/<user-id>",
+            "method": "PUT"
+        }
+    ],
+    "public-routes": [
+        {
+            "name": "Fetch User Details",
+            "path" : "/auth/login/",
+            "method" : "POST"
+        },
+        {
+            "name": "Update User Details",
+            "path" : "/auth/signup/",
+            "method": "POST"
+        }
+    ]
+}
