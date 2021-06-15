@@ -34,58 +34,59 @@ const useStyles = makeStyles((theme) => ({
 const ObjectModal = ({ obj, myObjKey, isArray }) => {
 	const classes = useStyles();
 	const [ keyValues, setKeyValues ] = useState(Object.values(obj));
-
-	useEffect(() => {
-		console.log(obj, myObjKey);
-	}, []);
+	console.log('Keyvalues', keyValues);
 
 	const handleClick = () => {
-		let objUpdate = obj;
-		let j = 0;
-		for (let i in objUpdate) {
-			console.log('keyValues[i]', i, keyValues[i]);
-			objUpdate[i] = keyValues[j++];
-		}
-		console.log('keyValues', keyValues, myObjKey, 'objUpdate==>>>>', objUpdate);
-		data[myObjKey] = objUpdate;
-		localStorage.setItem('myObject', JSON.stringify(data));
+		localStorage.setItem('myObject', JSON.stringify(keyValues));
 	};
 
-	const handleChange = (e) => {
+	const handleChange = (e, index, j) => {
+		console.log('event', e.target.value);
 		let temp = [ ...keyValues ];
-		temp[e.target.id] = e.target.value;
-		console.log('before', keyValues);
+		console.log('j', j);
+		console.log('temp', temp[index][j]);
+
+		temp[index][j] = e.target.value;
 		setKeyValues(temp);
-		console.log('after', keyValues);
 	};
 
 	return (
 		<div className={classes.root}>
-			<form>
-				{obj.map((e, i) => {
-					Object.keys(e).map((ast, j) => (
-						// return (
-						// 	<div>
-						// 		{ast}:
-						// 		<input
-						// 			id={j}
-						// 			value={keyValues[j]}
-						// 			onChange={handleChange}
-						// 			className={classes.emailInput}
-						// 		/>
-						// 	</div>
-						// );
-
+			{isArray ? (
+				<form>
+					{obj.map((item, index) => (
 						<div>
-							{ast}:
+							{Object.keys(item).map((ast, j) => (
+								<div>
+									{ast}:
+									<input
+										id={j}
+										value={obj[index][ast]}
+										onChange={(e) => handleChange(e, index, ast)}
+										className={classes.emailInput}
+									/>
+								</div>
+							))}
+						</div>
+					))}
+
+					<button type="button" onClick={handleClick} className={classes.button}>
+						Submit
+					</button>
+				</form>
+			) : (
+				<form>
+					{Object.keys(obj).map((e, j) => (
+						<div>
+							{e}:
 							<input id={j} value={keyValues[j]} onChange={handleChange} className={classes.emailInput} />
 						</div>
-					));
-				})}
-				<button type="button" onClick={handleClick} className={classes.button}>
-					Submit
-				</button>
-			</form>
+					))}
+					<button type="button" onClick={handleClick} className={classes.button}>
+						Submit
+					</button>
+				</form>
+			)}
 		</div>
 	);
 };
