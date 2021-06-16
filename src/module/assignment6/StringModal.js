@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: '10px',
 		color: 'var(--gray)!important',
 		backgroundColor: 'var(--bg)',
-		border: '1px solid',
-		border: 'white',
+		border: '1px solid white',
 		margin: '8px 10px',
 		cursor: 'text!important',
 		padding: '12px 20px'
