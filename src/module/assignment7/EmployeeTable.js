@@ -110,11 +110,10 @@ export default function EmployeeTable() {
 		setEdit(true);
 	};
 
-	// const handleDelete = (e, id) => {
-	// 	let res = ""
-	// 	let delete = rows.splice(id,1, res)
-	// 	addRows(delete)
-	// };
+	const handleDelete = (id) => {
+		let del = rows.splice(id, 1);
+		addRows(del);
+	};
 
 	const handleClose = () => {
 		setOpen(false);
@@ -228,7 +227,7 @@ export default function EmployeeTable() {
 										<button onClick={handleOpen1} id={i} className={classes.editButton}>
 											edit
 										</button>
-										{<DeleteIcon color="primary" id={i} />}
+										{<DeleteIcon color="primary" id={i} onClick={() => handleDelete(i)} />}
 									</TableCell>
 								</TableRow>
 							))
