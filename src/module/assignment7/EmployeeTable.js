@@ -16,9 +16,9 @@ import {
 	IconButton
 } from '@material-ui/core';
 import SelectPicker from './SelectPicker';
-import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddForm from './AddForm';
+import employee from '../assignment6/data/employee.json';
 
 const useStyles = makeStyles((theme) => ({
 	table: {
@@ -78,66 +78,8 @@ export default function EmployeeTable() {
 	const [ edit, setEdit ] = useState(false);
 	const [ loading, setLoading ] = useState(false);
 	const [ editIndex, setEditIndex ] = useState('');
-	const [ initialRows, setInitialRows ] = useState([
-		{
-			ename: 'Shrankhla',
-			username: 'Shrankz09',
-			email: 'shrankhla.gaur@appinventiv.com',
-			location: 'Noida',
-			title: 'Trainee'
-		},
-		{
-			ename: 'Ayush',
-			username: 'AyushJain',
-			email: 'ayush.jain@appinventiv.com',
-			location: 'Surya Nagar',
-			title: 'Trainee'
-		},
-		{
-			ename: 'Srishti',
-			username: 'SrishtiJay',
-			email: 'srishti.jay@appinventiv.com',
-			location: 'Noida',
-			title: 'Trainer'
-		},
-		{
-			ename: 'Amar',
-			username: 'Amar007',
-			email: 'Amar.pathak@appinventiv.com',
-			location: 'Delhi',
-			title: 'Trainer'
-		}
-	]);
-	const [ rows, setRows ] = useState([
-		{
-			ename: 'Shrankhla',
-			username: 'Shrankz09',
-			email: 'shrankhla.gaur@appinventiv.com',
-			location: 'Noida',
-			title: 'Trainee'
-		},
-		{
-			ename: 'Ayush',
-			username: 'AyushJain',
-			email: 'ayush.jain@appinventiv.com',
-			location: 'Surya Nagar',
-			title: 'Trainee'
-		},
-		{
-			ename: 'Srishti',
-			username: 'SrishtiJay',
-			email: 'srishti.jay@appinventiv.com',
-			location: 'Noida',
-			title: 'Trainer'
-		},
-		{
-			ename: 'Amar',
-			username: 'Amar007',
-			email: 'Amar.pathak@appinventiv.com',
-			location: 'Delhi',
-			title: 'Trainer'
-		}
-	]);
+	const [ initialRows, setInitialRows ] = useState(employee);
+	const [ rows, setRows ] = useState(employee);
 
 	const picker = [
 		{
@@ -157,6 +99,7 @@ export default function EmployeeTable() {
 
 	const handleOpen = () => {
 		setOpen(true);
+		setEdit(false);
 	};
 
 	const handleOpen1 = (e) => {
@@ -166,6 +109,13 @@ export default function EmployeeTable() {
 		console.log('e etarget', e.target);
 		setEdit(true);
 	};
+
+	// const handleDelete = (e, id) => {
+	// 	let res = ""
+	// 	let delete = rows.splice(id,1, res)
+	// 	addRows(delete)
+	// };
+
 	const handleClose = () => {
 		setOpen(false);
 	};
@@ -207,10 +157,6 @@ export default function EmployeeTable() {
 			setLoading(false);
 		}, 2000);
 		setOpen(false);
-	};
-
-	const handleDelete = () => {
-		setRows(rows.filter);
 	};
 
 	return (
@@ -282,7 +228,7 @@ export default function EmployeeTable() {
 										<button onClick={handleOpen1} id={i} className={classes.editButton}>
 											edit
 										</button>
-										{<DeleteIcon color="primary" onClick={() => handleDelete(i)} />}
+										{<DeleteIcon color="primary" id={i} />}
 									</TableCell>
 								</TableRow>
 							))

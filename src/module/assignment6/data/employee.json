@@ -1,0 +1,30 @@
+[
+    {
+        "ename": "Shrankhla",
+        "username": "Shrankz09",
+        "email": "shrankhla.gaur@appinventiv.com",
+        "location": "Noida",
+        "title": "Trainee"
+    },
+    {
+        "ename": "Ayush",
+        "username": "AyushJain",
+        "email": "ayush.jain@appinventiv.com",
+        "location": "Surya Nagar",
+        "title": "Trainee"
+    },
+    {
+        "ename": "Srishti",
+        "username": "SrishtiJay",
+        "email": "srishti.jay@appinventiv.com",
+        "location": "Noida",
+        "title": "Trainer"
+    },
+    {
+        "ename": "Amar",
+        "username": "Amar007",
+        "email": "Amar.pathak@appinventiv.com",
+        "location": "Delhi",
+        "title": "Trainer"
+    }
+]
