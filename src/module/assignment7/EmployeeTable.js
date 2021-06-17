@@ -11,9 +11,13 @@ import {
 	Paper,
 	Modal,
 	Backdrop,
-	Fade
+	Fade,
+	CircularProgress,
+	IconButton
 } from '@material-ui/core';
 import SelectPicker from './SelectPicker';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
 import AddForm from './AddForm';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,16 +44,100 @@ const useStyles = makeStyles((theme) => ({
 	},
 	headContainer: {
 		margin: '40px 0'
+	},
+	backdrop: {
+		zIndex: theme.zIndex.drawer + 1,
+		color: '#fff'
+	},
+	head: {
+		font: `${theme.typography.fontWeightBold} ${theme.spacing(2)}px "Helvetica"`
+	},
+	icon: {
+		margin: theme.spacing(1)
+	},
+	editButton: {
+		color: 'white',
+		backgroundColor: '#3f51b5',
+		fontSize: '0.875rem',
+		minWidth: '64px',
+		fontWeight: '500',
+		lineHeight: '1.75',
+		letterSpacing: ' 0.02857em',
+		borderRadius: '4px',
+		textTransform: 'uppercase',
+		cursor: 'pointer',
+		padding: '6px 16px',
+		border: '1px solid #3f51b5'
 	}
 }));
 
 export default function EmployeeTable() {
 	const classes = useStyles();
-	const [ field, setField ] = useState('');
-	const [ search, setSearch ] = useState('');
+	const [ field, setField ] = useState(1);
 	const [ open, setOpen ] = useState(false);
-	const [ rows, setRows ] = useState([]);
-	console.log('rows1', rows);
+	const [ edit, setEdit ] = useState(false);
+	const [ loading, setLoading ] = useState(false);
+	const [ editIndex, setEditIndex ] = useState('');
+	const [ initialRows, setInitialRows ] = useState([
+		{
+			ename: 'Shrankhla',
+			username: 'Shrankz09',
+			email: 'shrankhla.gaur@appinventiv.com',
+			location: 'Noida',
+			title: 'Trainee'
+		},
+		{
+			ename: 'Ayush',
+			username: 'AyushJain',
+			email: 'ayush.jain@appinventiv.com',
+			location: 'Surya Nagar',
+			title: 'Trainee'
+		},
+		{
+			ename: 'Srishti',
+			username: 'SrishtiJay',
+			email: 'srishti.jay@appinventiv.com',
+			location: 'Noida',
+			title: 'Trainer'
+		},
+		{
+			ename: 'Amar',
+			username: 'Amar007',
+			email: 'Amar.pathak@appinventiv.com',
+			location: 'Delhi',
+			title: 'Trainer'
+		}
+	]);
+	const [ rows, setRows ] = useState([
+		{
+			ename: 'Shrankhla',
+			username: 'Shrankz09',
+			email: 'shrankhla.gaur@appinventiv.com',
+			location: 'Noida',
+			title: 'Trainee'
+		},
+		{
+			ename: 'Ayush',
+			username: 'AyushJain',
+			email: 'ayush.jain@appinventiv.com',
+			location: 'Surya Nagar',
+			title: 'Trainee'
+		},
+		{
+			ename: 'Srishti',
+			username: 'SrishtiJay',
+			email: 'srishti.jay@appinventiv.com',
+			location: 'Noida',
+			title: 'Trainer'
+		},
+		{
+			ename: 'Amar',
+			username: 'Amar007',
+			email: 'Amar.pathak@appinventiv.com',
+			location: 'Delhi',
+			title: 'Trainer'
+		}
+	]);
 
 	const picker = [
 		{
@@ -63,6 +151,7 @@ export default function EmployeeTable() {
 	];
 
 	const handleChange = (e) => {
+		console.log('select', field);
 		setField(e.target.value);
 	};
 
@@ -70,28 +159,66 @@ export default function EmployeeTable() {
 		setOpen(true);
 	};
 
+	const handleOpen1 = (e) => {
+		setEditIndex(e.target.id);
+		setOpen(true);
+		console.log('setting index in emp table', editIndex, e.target.id);
+		console.log('e etarget', e.target);
+		setEdit(true);
+	};
 	const handleClose = () => {
 		setOpen(false);
 	};
 
-	// const NameSearch = (e) => {
-	// 	let input = e.target.value;
-	// 	input = input.toUpperCase();
-	// 	for (let i = 0; rows.length > 0; i++) {
-	// 		if (!rows[i].toUpperCase().includes(input)) {
-	// 			console.log('none');
-	// 		} else {
-	// 			console.log('rows', rows[i]);
-	// 		}
-	// 	}
-	// };
+	const nameSearch = (e) => {
+		let input = e.target.value;
+		if (input.length === 0) {
+			setLoading(true);
+			setTimeout(() => {
+				setRows(initialRows);
+				setLoading(false);
+			}, 2000);
+		} else {
+			let newAry = rows.filter((item) => {
+				if (field === 1) {
+					return item.ename.toLocaleLowerCase() === input.toLocaleLowerCase();
+				} else if (field === 2) {
+					return item.email === input;
+				} else {
+					return 'No data found';
+				}
+			});
+			console.log('newAry', newAry);
+			if (newAry.length > 0) {
+				setLoading(true);
+				setTimeout(() => {
+					setRows(newAry);
+					setLoading(false);
+				}, 2000);
+			}
+		}
+	};
+
+	const addRows = () => {
+		const newRows = [ ...rows ];
+		setLoading(true);
+		setTimeout(() => {
+			setRows(newRows);
+			setLoading(false);
+		}, 2000);
+		setOpen(false);
+	};
+
+	const handleDelete = () => {
+		setRows(rows.filter);
+	};
 
 	return (
 		<div>
 			<div>
 				<div className={classes.headContainer}>
 					<SelectPicker picker={picker} handleChange1={(e) => handleChange(e)} defaultValue={field} />
-					<input type="search" className={classes.input} placeholder="Search..." />
+					<input type="search" className={classes.input} placeholder="Search..." onKeyUp={nameSearch} />
 					<Button variant="contained" color="primary" style={{ float: 'right' }} onClick={handleOpen}>
 						Add Employee
 					</Button>
@@ -110,33 +237,53 @@ export default function EmployeeTable() {
 				>
 					<Fade in={open}>
 						<div className={classes.fade}>
-							<AddForm setRows={setRows} rows={rows} />
+							<AddForm
+								rows={rows}
+								addRows={addRows}
+								handleClick={(e) => handleClose(e)}
+								data_index={editIndex}
+								isEdit={edit}
+							/>
 						</div>
 					</Fade>
 				</Modal>
 			</div>
 			<TableContainer component={Paper}>
+				{loading ? (
+					<Backdrop className={classes.backdrop} open={true}>
+						<CircularProgress color="inherit" />
+					</Backdrop>
+				) : (
+					''
+				)}
 				<Table className={classes.table} aria-label="simple table">
 					<TableHead>
 						<TableRow>
-							<TableCell>Employee Name</TableCell>
-							<TableCell>Username</TableCell>
-							<TableCell>Email</TableCell>
-							<TableCell>Date of Joining</TableCell>
-							<TableCell>Title</TableCell>
+							<TableCell className={classes.head}>Employee Name</TableCell>
+							<TableCell className={classes.head}>Username</TableCell>
+							<TableCell className={classes.head}>Email</TableCell>
+							<TableCell className={classes.head}>Location</TableCell>
+							<TableCell className={classes.head}>Title</TableCell>
+							<TableCell className={classes.head}>Action</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
 						{rows.length > 0 ? (
-							rows.map((row) => (
-								<TableRow key={row.ename}>
+							rows.map((row, i) => (
+								<TableRow key={row.username}>
 									<TableCell component="th" scope="row">
 										{row.ename}
 									</TableCell>
 									<TableCell>{row.username}</TableCell>
 									<TableCell>{row.email}</TableCell>
-									<TableCell>{row.doj}</TableCell>
+									<TableCell>{row.location}</TableCell>
 									<TableCell>{row.title}</TableCell>
+									<TableCell>
+										<button onClick={handleOpen1} id={i} className={classes.editButton}>
+											edit
+										</button>
+										{<DeleteIcon color="primary" onClick={() => handleDelete(i)} />}
+									</TableCell>
 								</TableRow>
 							))
 						) : (

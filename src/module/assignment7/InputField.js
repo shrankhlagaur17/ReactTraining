@@ -19,16 +19,8 @@ const useStyles = makeStyles(() => ({
 
 const InputField = (props) => {
 	const classes = useStyles();
-	const [ submitOK, setSubmitOK ] = React.useState(true);
 
-	const Checker = () => {
-		if (props.name === '') {
-			alert('The field should not be empty');
-			setSubmitOK(false);
-		} else {
-			return setSubmitOK(true);
-		}
-	};
+
 	return (
 		<div className={classes.formContainer}>
 			<p id="transition-modal-description">{props.label}</p>

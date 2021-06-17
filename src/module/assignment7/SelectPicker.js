@@ -46,7 +46,7 @@ export default function SelectPicker(props) {
 				onChange={(e) => props.handleChange1(e)}
 			>
 				{props.picker.map((item) => (
-					<MenuItem key={item} value={item.id}>
+					<MenuItem key={item.id} value={item.id}>
 						{item.title}
 					</MenuItem>
 				))}
