@@ -16,10 +16,15 @@ const AddForm = (props) => {
 	const classes = useStyles();
 
 	const [ ename, setEname ] = useState('');
+	const [ enameErr, setEnameErr ] = useState({});
 	const [ username, setUsername ] = useState('');
+	const [ usernameErr, setUsernameErr ] = useState({});
 	const [ email, setEmail ] = useState('');
+	const [ emailErr, setEmailErr ] = useState({});
 	const [ location, setLocation ] = useState('');
+	const [ locationErr, setLocationErr ] = useState({});
 	const [ title, setTitle ] = useState('');
+	const [ titleErr, setTitleErr ] = useState({});
 
 	useEffect(() => {
 		if (props.isEdit) {
@@ -33,39 +38,99 @@ const AddForm = (props) => {
 	}, []);
 
 	const handleChangeEname = (e) => {
+		const isValid = formValidation();
 		setEname(e.target.value);
 	};
 	const handleChangeUsername = (e) => {
+		const isValid = formValidation();
 		setUsername(e.target.value);
 	};
 	const handleChangeEmail = (e) => {
+		const isValid = formValidation();
 		setEmail(e.target.value);
 	};
 	const handleChangeLocation = (e) => {
+		const isValid = formValidation();
 		setLocation(e.target.value);
 	};
 	const handleChangeTitle = (e) => {
+		const isValid = formValidation();
 		setTitle(e.target.value);
 	};
 
 	const onSubmit = () => {
+		const isValid = formValidation();
 		let result = { ename, username, email, location, title };
-		if (ename === '' || username === '' || email === '' || location === '' || title === '') {
-			alert('The field should not be empty');
-		} else {
+		if (isValid === true) {
 			const add = props.rows.splice(0, 0, result);
 			props.addRows(add);
-			console.log('result =>>>>', result);
-			console.log('rows', props.rows);
 		}
+		console.log('result =>>>>', result);
+		console.log('rows', props.rows);
 	};
 
 	const onEdit = () => {
+		const isValid = formValidation();
 		let result = { ename, username, email, location, title };
 		const edit = props.rows.splice(props.data_index, 1, result);
-		props.addRows(edit);
+		if (isValid === true) {
+			props.addRows(edit);
+		}
 		console.log('result1 => => =>', result);
 		console.log('rows11', edit);
+	};
+
+	const formValidation = () => {
+		const enameErr = {};
+		let isValid = true;
+		if (ename.trim().length < 3) {
+			enameErr.enameShort = "Employee name can't be empty or too Short";
+			isValid = false;
+		} else {
+			enameErr.enameShort = '';
+			isValid = true;
+		}
+		if (username.trim().length < 3) {
+			usernameErr.usernameShort = "Username can't be empty or too Short";
+			isValid = false;
+		} else {
+			usernameErr.usernameShort = '';
+			isValid = true;
+		}
+		if (email.trim().length < 3) {
+			emailErr.emailShort = "email can't be empty or too Short";
+			isValid = false;
+		} else {
+			emailErr.emailShort = '';
+			isValid = true;
+		}
+		if (!email.includes('@')) {
+			emailErr.emailShort = 'Email is not valid';
+			isValid = false;
+		} else {
+			emailErr.emailShort = '';
+			isValid = true;
+		}
+		if (location.trim().length < 3) {
+			locationErr.locationShort = "Location can't be empty or too Short";
+			isValid = false;
+		} else {
+			locationErr.locationShort = '';
+			isValid = true;
+		}
+		if (title.trim().length < 3) {
+			titleErr.titleShort = "Title can't be empty or too Short";
+			isValid = false;
+		} else {
+			titleErr.titleShort = '';
+			isValid = true;
+		}
+		setEnameErr(enameErr);
+		setUsernameErr(usernameErr);
+		setEmailErr(emailErr);
+		setLocationErr(locationErr);
+		setTitleErr(titleErr);
+		return isValid;
 	};
 	return (
 		<div>
@@ -77,6 +142,7 @@ const AddForm = (props) => {
 				name="ename"
 				id="ename"
 				type="name"
+				error={enameErr}
 				value={ename}
 				handleChange={(e) => handleChangeEname(e)}
 			/>
@@ -86,6 +152,7 @@ const AddForm = (props) => {
 				name="username"
 				id="username"
 				type="name"
+				error={usernameErr}
 				value={username}
 				handleChange={(e) => handleChangeUsername(e)}
 			/>
@@ -94,6 +161,7 @@ const AddForm = (props) => {
 				name="email"
 				id="email"
 				type="email"
+				error={emailErr}
 				value={email}
 				handleChange={(e) => handleChangeEmail(e)}
 			/>
@@ -102,6 +170,7 @@ const AddForm = (props) => {
 				name="location"
 				id="location"
 				type="text"
+				error={locationErr}
 				value={location}
 				handleChange={(e) => handleChangeLocation(e)}
 			/>
@@ -110,6 +179,7 @@ const AddForm = (props) => {
 				name="title"
 				id="title"
 				type="name"
+				error={titleErr}
 				value={title}
 				handleChange={(e) => handleChangeTitle(e)}
 			/>

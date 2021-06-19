@@ -12,8 +12,7 @@ import {
 	Modal,
 	Backdrop,
 	Fade,
-	CircularProgress,
-	IconButton
+	CircularProgress
 } from '@material-ui/core';
 import SelectPicker from './SelectPicker';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -78,7 +77,7 @@ export default function EmployeeTable() {
 	const [ edit, setEdit ] = useState(false);
 	const [ loading, setLoading ] = useState(false);
 	const [ editIndex, setEditIndex ] = useState('');
-	const [ initialRows, setInitialRows ] = useState(employee);
+	const [ initialRows ] = useState(employee);
 	const [ rows, setRows ] = useState(employee);
 
 	const picker = [
