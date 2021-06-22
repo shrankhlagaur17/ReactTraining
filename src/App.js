@@ -1,10 +1,8 @@
 import React from 'react';
-import Assignment7 from './module/assignment7'
+import Router from './router';
 
 const App = () => {
-	return (
-		<Assignment7 />
-	);
+	return <Router />;
 };
 
 export default App;

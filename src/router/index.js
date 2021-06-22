@@ -2,19 +2,17 @@ import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import PrivateRoutes from './PrivateRoute';
 import PublicRoutes from './PublicRoute';
-import Assignment5 from '../module/assignment5';
-import SignupScreen from '../module/assignment5/SignupScreen';
-import LoginScreen from '../module/assignment5/LoginScreen';
-import MovieScreen from '../module/assignment5/MovieScreen';
+import Assignment8 from '../module/assignment8';
+import MovieCard from '../module/assignment8/MovieCard';
+import CardDetail from '../module/assignment8/CardDetail';
 
 function Router() {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<PublicRoutes exact path="/" component={Assignment5} />
-				<PublicRoutes exact path="/signup" component={SignupScreen} />
-				<PublicRoutes exact path="/login" component={LoginScreen} />
-				<PrivateRoutes exact path="/movie" component={MovieScreen} />
+				<PublicRoutes exact path="/" component={Assignment8} />
+				<PrivateRoutes exact path="/movie" component={MovieCard} />
+				<PrivateRoutes exact path="/carddetail/:id" component={CardDetail} />
 			</Switch>
 		</BrowserRouter>
 	);

@@ -1,0 +1,174 @@
+[
+	{
+		"id": "1",
+		"avatar": "R",
+		"title": "Dangal",
+		"date": "23 December 2016",
+        "image": "./image/Dangal-Movie-Review.jpg",
+		"description":
+			"Mahavir Singh Phogat, a former wrestler, decides to fulfil his dream of winning a gold medal for his country by training his daughters for the Commonwealth Games despite the existing social stigmas.",
+        "detail": [
+            {
+                "detailId": "1",
+                "titles": "Dangal",
+                "images": "./image/Dangal-Movie-Review.jpg",
+		        "descriptions":
+			        "Mahavir Singh Phogat, a former wrestler, decides to fulfil his dream of winning a gold medal for his country by training his daughters for the Commonwealth Games despite the existing social stigmas."
+            }
+            
+        ]
+		
+	},
+	{
+		"id": "2",
+		"avatar": "S",
+		"title": "Ring",
+		"date": "7 February 2003",
+		"image": "./image/ring.jpg",
+		"description":
+			"After her niece Katie's horrifying death, Rachel, a young journalist, investigates a mysterious videotape that kills its viewers within a week's time. It is a horror movie that is allowed to age group above 18.",
+            "detail": [
+                {
+                    "detailId": "2",
+                    "titles": "Ring",
+                    "images": "./image/ring.jpg",
+                    "descriptions":
+                        "After her niece Katie's horrifying death, Rachel, a young journalist, investigates a mysterious videotape that kills its viewers within a week's time. It is a horror movie that is allowed to age group above 18."
+                }
+                
+            ]
+	},
+	{
+		"id": "3",
+		"avatar": "T",
+		"title": "Truman",
+		"date": "1 June 1998",
+		"image": "./image/truman.jpg",
+		"description":
+			"An insurance salesman is oblivious of the fact that his entire life is a TV show and his family members are mere actors. As he starts noticing things and uncovers the truth, he decides to escape.",
+            "detail": [
+                {
+                    "detailId": "3",
+                    "titles": "Truman",
+                    "images": "./image/truman.jpg",
+                    "descriptions":
+                        "An insurance salesman is oblivious of the fact that his entire life is a TV show and his family members are mere actors. As he starts noticing things and uncovers the truth, he decides to escape."
+                }
+                
+            ]
+	},
+    {
+		"id": "4",
+		"avatar": "A",
+		"title": "Avatar",
+		"date": "18 December 2009",
+		"image": "./image/avatar.jpeg",
+		"description":
+			"Jake, who is paraplegic, replaces his twin on the Na'vi inhabited Pandora for a corporate mission. After the natives accept him as one of their own, he must decide where his loyalties lie. It is an animated movie.",
+            "detail": [
+                {
+                    "detailId": "4",
+                    "titles": "Avatar",
+                    "images": "./image/avatar.jpeg",
+                    "descriptions":
+                        "Jake, who is paraplegic, replaces his twin on the Na'vi inhabited Pandora for a corporate mission. After the natives accept him as one of their own, he must decide where his loyalties lie. It is an animated movie."
+                }
+                
+            ]
+	},
+    {
+		"id": "5",
+		"avatar": "S",
+		"title": "Wonder Woman 1984",
+		"date": "16 December 2020",
+		"image": "./image/wonderWomen.jpeg",
+		"description":
+			"Wonder Woman finds herself battling two opponents, Maxwell Lord, a shrewd entrepreneur, and Barbara Minerva, a friend-turned-foe. Meanwhile, she also ends up crossing paths with her love interest.",
+            "detail": [
+                {
+                    "detailId": "5",
+                    "titles": "Wonder Woman 1984",
+                    "images": "./image/wonderWomen.jpeg",
+                    "descriptions":
+                        "Wonder Woman finds herself battling two opponents, Maxwell Lord, a shrewd entrepreneur, and Barbara Minerva, a friend-turned-foe. Meanwhile, she also ends up crossing paths with her love interest."
+                }
+                
+            ]
+	},
+    {
+		"id": "6",
+		"avatar": "G",
+		"title": "Sarkar",
+		"date": "6 November 2018",
+		"image": "./image/sarkaar.jpeg",
+		"description":
+			"An NRI businessman returns home and learns about the practice of fraudulent voting. When he decides to investigate, two corrupt politicians strive to block his path. It is an South Indian movie, released in 2018.",
+            "detail": [
+                {
+                    "detailId": "6",
+                    "titles": "Sarkar",
+                    "images": "./image/sarkaar.jpeg",
+                    "descriptions":
+                        "An NRI businessman returns home and learns about the practice of fraudulent voting. When he decides to investigate, two corrupt politicians strive to block his path. It is an South Indian movie, released in 2018."
+                }
+                
+            ]
+	},
+    {
+		"id": "7",
+		"avatar": "D",
+		"title": "Megamind",
+		"date": "24 December 2010",
+		"image": "./image/megamind.jpeg",
+		"description":
+			"A supervillain named Megamind defeats and kills his enemy. Out of boredom he creates a superhero who becomes evil, forcing Megamind to turn into a hero. It was released in 2010, especially for kids.",
+            "detail": [
+                {
+                    "detailId": "7",
+                    "titles": "Megamind",
+                    "images": "./image/megamind.jpeg",
+                    "descriptions":
+                        "A supervillain named Megamind defeats and kills his enemy. Out of boredom he creates a superhero who becomes evil, forcing Megamind to turn into a hero. It was released in 2010, especially for kids."
+                }
+                
+            ]
+	},
+    {
+		"id": "8",
+		"avatar": "A",
+		"title": "The Boss Baby",
+		"date": "31 March 2017",
+		"image": "./image/bossBaby.jpeg",
+		"description":
+			"Seven-year-old Tim gets jealous when his parents give all their attention to his little brother. Tim soon learns that the baby can talk and the two team up to foil the plans of the CEO of Puppy Co.",
+            "detail": [
+                {
+                    "detailId": "8",
+                    "titles": "The Boss Baby",
+                    "images": "./image/bossBaby.jpeg",
+                    "descriptions":
+                        "Seven-year-old Tim gets jealous when his parents give all their attention to his little brother. Tim soon learns that the baby can talk and the two team up to foil the plans of the CEO of Puppy Co."
+                }
+                
+            ]
+	},
+    {
+		"id": "9",
+		"avatar": "P",
+		"title": "Despicable Me",
+		"date": "6 August 2010",
+		"image": "./image/despicableMe.jpeg",
+		"description":
+			"Gru, a criminal mastermind, adopts three orphans as pawns to carry out the biggest heist in history. His life takes an unexpected turn when the little girls see him as their potential father.",
+            "detail": [
+                {
+                    "detailId": "9",
+                    "titles": "Despicable Me",
+                    "images": "./image/despicableMe.jpeg",
+                    "descriptions":
+                        "Gru, a criminal mastermind, adopts three orphans as pawns to carry out the biggest heist in history. His life takes an unexpected turn when the little girls see him as their potential father."
+                }
+                
+            ]
+	}
+]

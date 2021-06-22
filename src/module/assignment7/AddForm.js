@@ -97,8 +97,9 @@ const AddForm = (props) => {
 			usernameErr.usernameShort = '';
 			isValid = true;
 		}
+
 		if (email.trim().length < 3) {
-			emailErr.emailShort = "email can't be empty or too Short";
+			emailErr.emailShort = "Email can't be empty or too Short";
 			isValid = false;
 		} else {
 			emailErr.emailShort = '';
@@ -125,6 +126,7 @@ const AddForm = (props) => {
 			titleErr.titleShort = '';
 			isValid = true;
 		}
+
 		setEnameErr(enameErr);
 		setUsernameErr(usernameErr);
 		setEmailErr(emailErr);

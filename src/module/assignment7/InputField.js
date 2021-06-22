@@ -37,6 +37,7 @@ const InputField = (props) => {
 					className={classes.input}
 					value={props.value}
 					onChange={(e) => props.handleChange(e)}
+					onClick={(e) => props.handleChange(e)}
 				/>
 			</div>
 			{Object.keys(props.error).map((key) => {
