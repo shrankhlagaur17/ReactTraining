@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import InputField from './InputField';
 import { Formik, Form } from 'formik';
@@ -64,10 +64,10 @@ const LoginPage = () => {
 							.max(15, 'Password should not be more than 15 characters')
 							.required('Password is required and cannot be empty')
 					})}
-					onSubmit={() => {
-						localStorage.getItem('username');
-						localStorage.getItem('email');
-						localStorage.getItem('password');
+					onSubmit={(values) => {
+						localStorage.setItem('username', values.username);
+						localStorage.setItem('email', values.email);
+						localStorage.setItem('password', values.password);
 
 						localStorage.setItem('isLogin', true);
 						history.push('/movie');

@@ -46,7 +46,7 @@ const useStyles = makeStyles(() => ({
 export default function MovieCard() {
 	const classes = useStyles();
 	const history = useHistory();
-	const handleClick = (item_id, item_detail) => {
+	const handleClick = (item_id) => {
 		history.push(`/carddetail/${item_id}`);
 	};
 
@@ -54,7 +54,7 @@ export default function MovieCard() {
 		if (localStorage.getItem('isLogin') === undefined || localStorage.getItem('isLogin') === null) {
 			history.push('/');
 		}
-	}, []);
+	});
 
 	return (
 		<div className={classes.mainContainer}>
@@ -84,7 +84,7 @@ export default function MovieCard() {
 						<Button
 							aria-label="add to favorites"
 							style={{ color: 'white' }}
-							onClick={() => handleClick(item.id, item.detail)}
+							onClick={() => handleClick(item.id)}
 						>
 							Know More
 						</Button>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Typography, makeStyles, Button } from '@material-ui/core';
+import { makeStyles, Button } from '@material-ui/core';
 import movieData from '../assignment6/data/movie.json';
 
 const useStyles = makeStyles(() => ({
@@ -58,13 +58,12 @@ const CardDetail = () => {
 			}
 			console.log('ID details', id, movieData);
 			const movie = findMovie(id, movieData);
-			debugger;
 			const detail = movie.detail;
 			setFilm(detail);
 			console.log('filmDetails =>>>>>>>', film);
 			console.log('Details =>>>>>>>', detail);
 		},
-		[ film ]
+		[ film, id, history ]
 	);
 
 	const handleClick = () => {
