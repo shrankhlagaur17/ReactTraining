@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	emailInput: {
 		width: '95%',
-		height: '50px',
+		height: '30px',
 		font: `${theme.typography.fontWeightMedium} ${theme.spacing(2)}px "Helvetica"`,
 		lineHeight: 1.78,
 		color: 'var(--gray)!important',
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	inputInvalid: {
 		width: '95%',
-		height: '50px',
+		height: '30px',
 		font: `${theme.typography.fontWeightMedium} ${theme.spacing(2.25)}px "Helvetica"`,
 		lineHeight: 1.78,
 		color: 'red !important',

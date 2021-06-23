@@ -1,8 +1,8 @@
 import React from 'react';
-import Router from './router';
+import ApiRouting from './router/ApiRouting';
 
 const App = () => {
-	return <Router />;
+	return <ApiRouting />;
 };
 
 export default App;
