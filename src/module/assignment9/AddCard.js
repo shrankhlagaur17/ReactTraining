@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles, Button, Typography } from '@material-ui/core';
 import InputField from '../assignment8/InputField';
 import { Formik, Form } from 'formik';
@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
 
 const AddCard = (props) => {
 	const classes = useStyles();
-	// useEffect(() => console.log('addUser ===>>> in ADDcard ', props.addUser, props));
+
 	return (
 		<div>
 			{props.isAdd ? (

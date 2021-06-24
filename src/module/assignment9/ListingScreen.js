@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import DeleteModal from './DeleteModal';
 import axios from 'axios';
+import api from './service/api';
+
 import {
 	makeStyles,
 	Card,
@@ -102,68 +104,106 @@ export default function ListingScreen() {
 
 	const userList = () => {
 		setLoading(true);
-		setTimeout(async () => {
-			try {
-				const response = await axios.get('https://reqres.in/api/users?page=2');
-				console.log('response =>>>>', response.data.data);
-				setList(response.data.data);
-				setLoading(false);
-			} catch (err) {
-				console.log('Api error', err);
-			}
+		const endPoint = 'api/users';
+		const params = '';
+		setTimeout(() => {
+			api.getApiCall(
+				endPoint,
+				params,
+				(response) => {
+					console.log('response status', response.status);
+					console.log('response data', response.data.data);
+					if (response.status === 200) {
+						setList(response.data.data);
+						setLoading(false);
+					}
+				},
+				(error) => {
+					console.log(error);
+				}
+			);
 		}, 1000);
 	};
 
-	const addUser = async () => {
-		try {
-			const result = await axios.post('https://reqres.in/api/users', {
-				name: 'morpheus',
-				job: 'leader'
-			});
-			console.log('addUser =>>>>', result.data);
-			const addObj = {
-				id: result.data.id,
-				first_name: result.data.name,
-				last_name: result.data.job
-			};
-			if (result.status === 201) {
-				const userAdd = [ ...list, addObj ];
-				setList(userAdd);
-				setIsAdd(true);
+	const addUser = () => {
+		const endPoint = 'api/users';
+		const params = {
+			name: 'morpheus',
+			job: 'leader'
+		};
+		api.postApiCall(
+			endPoint,
+			params,
+			(response) => {
+				console.log('response status', response.status);
+				const addObj = {
+					id: response.data.id,
+					first_name: response.data.name,
+					last_name: response.data.job
+				};
+				if (response.status === 201) {
+					const userAdd = [ ...list, addObj ];
+					setList(userAdd);
+					setIsAdd(true);
+				}
+				console.log('addObj =>>>>', addObj);
+				setTimeout(() => {
+					setOpen(false);
+				}, 1000);
+				setTimeout(() => {
+					setIsAdd(false);
+				}, 3000);
+			},
+			(error) => {
+				console.log(error);
 			}
-			console.log('addUser timeout=>>>>', list);
-			console.log('addObj =>>>>', addObj);
-			setTimeout(() => {
-				setOpen(false);
-			}, 1000);
-			setTimeout(() => {
-				setIsAdd(false);
-			}, 3000);
-		} catch (err) {
-			console.log('Api error', err);
-		}
+		);
 	};
 
-	const handleDelete = async (e) => {
-		setOpen(false);
-		setLoading(true);
-		try {
-			const del = await axios.delete('https://reqres.in/api/users/' + e.target.id);
-			console.log('delete =>>>>', 'https://reqres.in/api/users/' + e.target.id, del.data);
-			if (del.status === 204) {
-				setOpen(true);
-				setIsDel(true);
-				setLoading(false);
+	// const handleDelete = async (e) => {
+	// 	setOpen(false);
+	// 	setLoading(true);
+	// 	try {
+	// 		const del = await axios.delete('https://reqres.in/api/users/' + e.target.id);
+	// 		if (del.status === 204) {
+	// 			setOpen(true);
+	// 			setIsDel(true);
+	// 			setLoading(false);
+	// 		}
+	// 		setTimeout(() => {
+	// 			setOpen(false);
+	// 		}, 1000);
+	// 		setTimeout(() => {
+	// 			setIsDel(false);
+	// 		}, 2000);
+	// 	} catch (err) {
+	// 		console.log('Api error', err);
+	// 	}
+	// };
+
+	const handleDelete = () => {
+		const endPoint = 'api/users';
+		const params = '';
+		api.deleteApiCall(
+			endPoint,
+			params,
+			(response) => {
+				console.log('response status', response.status);
+				if (response.status === 204) {
+					setOpen(true);
+					setIsDel(true);
+				}
+				setTimeout(() => {
+					setOpen(false);
+				}, 1000);
+				setTimeout(() => {
+					setIsDel(false);
+				}, 2000);
+			},
+			(error) => {
+				console.log(error);
 			}
-			setTimeout(() => {
-				setOpen(false);
-			}, 1000);
-			setTimeout(() => {
-				setIsDel(false);
-			}, 2000);
-		} catch (err) {
-			console.log('Api error', err);
-		}
+		);
 	};
 
 	const handleLogout = () => {
