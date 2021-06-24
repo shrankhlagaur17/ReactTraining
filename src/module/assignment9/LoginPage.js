@@ -46,7 +46,7 @@ const LoginPage = () => {
 	const history = useHistory();
 	const [ token, setToken ] = useState('');
 
-	const userLogin = async () => {
+	const userLogin = () => {
 		const endPoint = 'api/login';
 		const params = {
 			email: 'eve.holt@reqres.in',
@@ -56,11 +56,9 @@ const LoginPage = () => {
 			endPoint,
 			params,
 			(response) => {
-				if (response.status === 200) {
-					setToken(response.data.token);
-					console.log('login response data', response.data);
-					console.log('login token =>>>>', response.data.token);
-				}
+				setToken(response.data.token);
+				console.log('login response data', response.data);
+				console.log('login token =>>>>', response.data.token);
 			},
 			(error) => {
 				console.log(error);
