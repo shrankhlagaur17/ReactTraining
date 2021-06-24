@@ -37,7 +37,7 @@ const AddCard = (props) => {
 	return (
 		<div>
 			{props.isAdd ? (
-				<Typography style={{ color: 'green' }}>Your card is successfully deleted!</Typography>
+				<Typography style={{ color: 'green' }}>Your card is successfully added!</Typography>
 			) : (
 				<div>
 					<h3 className={classes.heading}>
