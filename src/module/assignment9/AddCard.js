@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
 
 const AddCard = (props) => {
 	const classes = useStyles();
-	useEffect(() => console.log('addUser ===>>> in ADDcard ', props.addUser, props));
+	// useEffect(() => console.log('addUser ===>>> in ADDcard ', props.addUser, props));
 	return (
 		<div>
 			{props.isAdd ? (
@@ -50,11 +50,10 @@ const AddCard = (props) => {
 								job: 'leader'
 							}}
 							validationSchema={Yup.object({
-								first_name: Yup.string().required(' is required'),
-								job: Yup.string()
-									.min(3, 'job must contain atleast 3 characters')
-									.max(15, 'job should not be more than 15 characters')
-									.required('job is required and cannot be empty')
+								first_name: Yup.string().required('First name is required'),
+								last_name: Yup.string().required('Last name is required'),
+								image: Yup.string().required('Image is required'),
+								email: Yup.string().required('Email is required and cannot be empty')
 							})}
 							onSubmit={(e) => {
 								props.addUser(e);
@@ -92,7 +91,7 @@ const AddCard = (props) => {
 										<InputField
 											label="Selfie"
 											id="selfie"
-											name="selfie"
+											name="image"
 											placeholder="Selfie"
 											type="file"
 											isRequired={true}

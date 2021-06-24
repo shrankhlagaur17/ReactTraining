@@ -121,12 +121,18 @@ export default function ListingScreen() {
 				job: 'leader'
 			});
 			console.log('addUser =>>>>', result.data);
-			if (result.status == 201) {
-				const userAdd = [ ...list, result.data ];
+			const addObj = {
+				id: result.data.id,
+				first_name: result.data.name,
+				last_name: result.data.job
+			};
+			if (result.status === 201) {
+				const userAdd = [ ...list, addObj ];
 				setList(userAdd);
 				setIsAdd(true);
 			}
 			console.log('addUser timeout=>>>>', list);
+			console.log('addObj =>>>>', addObj);
 			setTimeout(() => {
 				setOpen(false);
 			}, 1000);
@@ -144,7 +150,7 @@ export default function ListingScreen() {
 		try {
 			const del = await axios.delete('https://reqres.in/api/users/' + e.target.id);
 			console.log('delete =>>>>', 'https://reqres.in/api/users/' + e.target.id, del.data);
-			if (del.status == 204) {
+			if (del.status === 204) {
 				setOpen(true);
 				setIsDel(true);
 				setLoading(false);
