@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import DeleteModal from './DeleteModal';
-import axios from 'axios';
 import api from './service/api';
 
 import {
@@ -160,30 +159,9 @@ export default function ListingScreen() {
 		);
 	};
 
-	// const handleDelete = async (e) => {
-	// 	setOpen(false);
-	// 	setLoading(true);
-	// 	try {
-	// 		const del = await axios.delete('https://reqres.in/api/users/' + e.target.id);
-	// 		if (del.status === 204) {
-	// 			setOpen(true);
-	// 			setIsDel(true);
-	// 			setLoading(false);
-	// 		}
-	// 		setTimeout(() => {
-	// 			setOpen(false);
-	// 		}, 1000);
-	// 		setTimeout(() => {
-	// 			setIsDel(false);
-	// 		}, 2000);
-	// 	} catch (err) {
-	// 		console.log('Api error', err);
-	// 	}
-	// };
-
-	const handleDelete = () => {
+	const handleDelete = (e) => {
 		const endPoint = 'api/users';
-		const params = '';
+		const params = e.target.id;
 		api.deleteApiCall(
 			endPoint,
 			params,

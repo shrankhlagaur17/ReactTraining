@@ -26,7 +26,7 @@ const getApiCall = (endPoint, params, successCallBack, errorCallBack) => {
 
 const deleteApiCall = (endPoint, params, successCallBack, errorCallBack) => {
 	axios
-		.delete(baseUrl + endPoint, params)
+		.delete(baseUrl + endPoint + params)
 		.then((response) => {
 			successCallBack(response);
 		})

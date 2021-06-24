@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import InputField from '../assignment8/InputField';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
+import api from './service/api';
 
 import { makeStyles, Button } from '@material-ui/core';
 
@@ -47,16 +47,25 @@ const LoginPage = () => {
 	const [ token, setToken ] = useState('');
 
 	const userLogin = async () => {
-		try {
-			const login = await axios.post('https://reqres.in/api/login', {
-				email: 'eve.holt@reqres.in',
-				password: 'cityslicka'
-			});
-			setToken(login.data);
-			console.log('login response =>>>>', token);
-		} catch (err) {
-			console.log('Api error', err);
-		}
+		const endPoint = 'api/login';
+		const params = {
+			email: 'eve.holt@reqres.in',
+			password: 'cityslicka'
+		};
+		api.postApiCall(
+			endPoint,
+			params,
+			(response) => {
+				if (response.status === 200) {
+					setToken(response.data.token);
+					console.log('login response data', response.data);
+					console.log('login token =>>>>', response.data.token);
+				}
+			},
+			(error) => {
+				console.log(error);
+			}
+		);
 	};
 
 	return (
