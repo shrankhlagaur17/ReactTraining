@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import DeleteModal from './DeleteModal';
-import api from './service/api';
+import api from '../../service/api';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
 	makeStyles,
@@ -18,6 +19,7 @@ import {
 	Fade
 } from '@material-ui/core';
 import AddCard from './AddCard';
+import { UpdateUserList } from './action';
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
@@ -81,9 +83,11 @@ const useStyles = makeStyles((theme) => ({
 export default function ListingScreen() {
 	const classes = useStyles();
 	const history = useHistory();
+	const dispatch = useDispatch();
+	const { list } = useSelector((state) => state.userListReducer);
+
 	const [ open, setOpen ] = useState(false);
 	const [ loading, setLoading ] = useState(false);
-	const [ list, setList ] = useState([]);
 	const [ addMore, setAddMore ] = useState(false);
 	const [ isDel, setIsDel ] = useState(false);
 	const [ isAdd, setIsAdd ] = useState(false);
@@ -105,23 +109,23 @@ export default function ListingScreen() {
 		setLoading(true);
 		const endPoint = 'api/users';
 		const params = '';
-		setTimeout(() => {
-			api.getApiCall(
-				endPoint,
-				params,
-				(response) => {
-					console.log('response status', response.status);
-					console.log('response data', response.data.data);
-					if (response.status === 200) {
-						setList(response.data.data);
-						setLoading(false);
-					}
-				},
-				(error) => {
-					console.log(error);
+		// setTimeout(() => {
+		api.getApiCall(
+			endPoint,
+			params,
+			(response) => {
+				console.log('response status', response.status);
+				console.log('response data', response.data.data);
+				if (response.status === 200) {
+					setLoading(false);
+					dispatch(UpdateUserList(response.data.data));
 				}
-			);
-		}, 1000);
+			},
+			(error) => {
+				console.log(error);
+			}
+		);
+		// }, 1000);
 	};
 
 	const addUser = () => {
@@ -142,7 +146,7 @@ export default function ListingScreen() {
 				};
 				if (response.status === 201) {
 					const userAdd = [ ...list, addObj ];
-					setList(userAdd);
+					dispatch(UpdateUserList(userAdd));
 					setIsAdd(true);
 				}
 				console.log('addObj =>>>>', addObj);

@@ -3,8 +3,9 @@ import { useHistory } from 'react-router-dom';
 import InputField from '../assignment8/InputField';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import api from './service/api';
-
+import api from '../../service/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { UpdateUserLogin } from './action';
 import { makeStyles, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
 const LoginPage = () => {
 	const classes = useStyles();
 	const history = useHistory();
-	const [ token, setToken ] = useState('');
+	const dispatch = useDispatch();
+	const { userToken } = useSelector((state) => state.userListReducer);
 
 	const userLogin = () => {
 		const endPoint = 'api/login';
@@ -56,7 +58,7 @@ const LoginPage = () => {
 			endPoint,
 			params,
 			(response) => {
-				setToken(response.data.token);
+				dispatch(UpdateUserLogin(response.data.token));
 				console.log('login response data', response.data);
 				console.log('login token =>>>>', response.data.token);
 			},
@@ -84,12 +86,12 @@ const LoginPage = () => {
 							.max(15, 'Password should not be more than 15 characters')
 							.required('Password is required and cannot be empty')
 					})}
-					onSubmit={(values) => {
-						userLogin();
+					onSubmit={async (values) => {
+						await userLogin();
 						localStorage.setItem('email', values.email);
 						localStorage.setItem('password', values.password);
 						localStorage.setItem('isLogin', true);
-						localStorage.setItem('token', token);
+						localStorage.setItem('token', userToken);
 						history.push('/movie');
 					}}
 				>
