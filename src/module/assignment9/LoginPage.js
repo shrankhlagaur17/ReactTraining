@@ -70,7 +70,7 @@ const LoginPage = () => {
 
 	return (
 		<div>
-			<h1 className={classes.heading}>Login to see latest movie details</h1>
+			<h1 className={classes.heading}>Login to see latest card details</h1>
 			<div className={classes.mainContainer}>
 				<Formik
 					initialValues={{
