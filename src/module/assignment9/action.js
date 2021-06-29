@@ -1,8 +1,8 @@
-import { USERLIST, USERLOGIN } from '../../utils/actionNames';
+import { SUCCESS, USERLOGIN } from '../../utils/actionNames';
 
 export const UpdateUserList = (result) => {
 	return {
-		type: USERLIST,
+		type: SUCCESS,
 		payload: result
 	};
 };

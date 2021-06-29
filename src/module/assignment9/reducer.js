@@ -1,4 +1,4 @@
-import { USERLIST, USERLOGIN } from '../../utils/actionNames';
+import { SUCCESS, USERLOGIN } from '../../utils/actionNames';
 
 const initialState = {
 	list: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 const userListReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case USERLIST:
+		case SUCCESS:
 			return {
 				...state,
 				list: action.payload
@@ -22,7 +22,4 @@ const userListReducer = (state = initialState, action) => {
 	}
 };
 
-
-
 export default userListReducer;
-

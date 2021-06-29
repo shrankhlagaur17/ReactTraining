@@ -1,17 +1,17 @@
 import { DECREMENT, INCREMENT } from '../../utils/actionNames';
 
-const initialState = {
-	counter: 0
-};
+// const initialState = {
+// 	counter: 0
+// };
 
-const counterReducer = (state = initialState, action) => {
+const counterReducer = (state = 0, action) => {
 	switch (action.type) {
-		case INCREMENT:
+		case 'INCREMENT':
 			return {
 				...state,
 				counter: state.counter + action.payload
 			};
-		case DECREMENT:
+		case 'DECREMENT':
 			return {
 				...state,
 				counter: state.counter - action.payload
