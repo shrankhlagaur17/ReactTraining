@@ -7,15 +7,11 @@ import {
 	CardHeader,
 	CardMedia,
 	CardContent,
-	Backdrop,
-	CircularProgress,
 	Typography,
 	Button,
-	CardActions,
-	Modal,
-	Fade
+	CardActions
 } from '@material-ui/core';
-import { GlobalContext } from './globalState';
+import { GlobalContext, ThemeContext } from './globalState';
 import { UpdateUserList } from './action';
 
 const useStyles = makeStyles((theme) => ({
@@ -74,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ListingScreen = () => {
 	const { state, dispatch } = useContext(GlobalContext);
+	const { themeState } = useContext(ThemeContext);
 	const classes = useStyles();
 	const history = useHistory();
 	const handleLogout = () => {
@@ -96,7 +93,7 @@ const ListingScreen = () => {
 	}, []);
 
 	return (
-		<div className={classes.wrapper}>
+		<div className={classes.wrapper} style={themeState.active == 'dark' ? themeState.dark : themeState.light}>
 			<div className={classes.mainContainer}>
 				<div className={classes.innerContainer}>
 					{state &&
@@ -110,7 +107,18 @@ const ListingScreen = () => {
 									</Typography>
 								</CardContent>
 								<CardActions>
-									<Button className={classes.button} variant="contained" id={item.id}>
+									<Button
+										className={classes.button}
+										style={
+											themeState.active == 'dark' ? (
+												themeState.dark.button
+											) : (
+												themeState.light.button
+											)
+										}
+										variant="contained"
+										id={item.id}
+									>
 										Delete
 									</Button>
 								</CardActions>
@@ -118,7 +126,12 @@ const ListingScreen = () => {
 						))}
 				</div>
 				<div className={classes.logoutContainer}>
-					<Button className={classes.button} variant="contained" onClick={handleLogout}>
+					<Button
+						className={classes.button}
+						style={themeState.active == 'dark' ? themeState.dark.button : themeState.light.button}
+						variant="contained"
+						onClick={handleLogout}
+					>
 						Logout
 					</Button>
 				</div>

@@ -1,5 +1,4 @@
-import { APPROVED, UPDATE_DARK, UPDATE_LIGHT } from '../../utils/actionNames';
-import { initialState } from './ThemeContext';
+import { APPROVED, UPDATE_ACTIVE_THEME } from '../../utils/actionNames';
 
 export const userMovieReducer = (state = [], action) => {
 	switch (action.type) {
@@ -15,16 +14,12 @@ export const userMovieReducer = (state = [], action) => {
 
 export const themeReducer = (state, action) => {
 	switch (action.type) {
-		case UPDATE_DARK:
+		case UPDATE_ACTIVE_THEME:
 			return {
 				...state,
-				dark: { ...initialState.dark, border: '1px solid red' }
+				active: action.payload
 			};
-		case UPDATE_LIGHT:
-			return {
-				...state,
-				light: { ...initialState.light, border: '1px solid green' }
-			};
+
 		default:
 			return state;
 	}

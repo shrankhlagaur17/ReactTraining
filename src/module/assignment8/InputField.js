@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Field, ErrorMessage } from 'formik';
-
+import { ThemeContext } from '../assignment12/globalState';
 const useStyles = makeStyles((theme) => ({
 	container: {
 		'& input:focus': {
@@ -44,12 +44,10 @@ const useStyles = makeStyles((theme) => ({
 		}
 	},
 	label: {
-		font: `${theme.typography.fontWeightMedium} ${theme.spacing(2)}px "Helvetica"`,
+		font: `${theme.typography.fontWeightBold} ${theme.spacing(2)}px "Helvetica"`,
 		lineHeight: 1.63,
 		letterSpacing: '0.00938em',
-		margin: '5px 0',
-		color: 'var(--textGray)',
-		opacity: '0.5'
+		margin: '5px 0'
 	},
 	error: {
 		font: `${theme.typography.fontWeightMedium} ${theme.spacing(2)}px "Helvetica"`,
@@ -76,11 +74,16 @@ const useStyles = makeStyles((theme) => ({
 
 const InputField = (props) => {
 	const classes = useStyles();
+	const { themeState } = useContext(ThemeContext);
 
 	return (
 		<div>
-			<div className={classes.container}>
-				<label htmlFor="email" className={classes.label}>
+			<div className={classes.container} style={themeState.active == 'dark' ? themeState.dark : themeState.light}>
+				<label
+					htmlFor="email"
+					className={classes.label}
+					style={themeState.active == 'dark' ? themeState.dark.text : themeState.light.text}
+				>
 					{props.label}
 				</label>
 

@@ -4,15 +4,19 @@ import InputField from '../assignment8/InputField';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { makeStyles, Button } from '@material-ui/core';
-import { ThemeContext } from './ThemeContext';
-import { UpdateThemeDark } from './action';
+import { ThemeContext } from './globalState';
+import { UpdateThemeDark, UpdateThemeLight } from './action';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
+	mainDiv: {
+		padding: '50px 0',
+		textAlign: 'center',
+		height: '85vh'
+	},
 	mainContainer: {
 		display: 'flex',
 		justifyContent: 'center',
 		'& .MuiButton-root:hover': {
-			border: '2px solid #b0822f',
 			color: '#b0822f',
 			backgroundColor: '#f1d5ac'
 		}
@@ -28,27 +32,46 @@ const useStyles = makeStyles((theme) => ({
 		width: '100%',
 		height: '64px',
 		borderRadius: '32px',
-		border: '2px solid orange',
-		color: 'orange',
 		fontSize: '16px',
 		lineHeight: '1.5',
 		boxShadow: '0 2px 4px 0 rgba(103, 194, 6, 0.3)',
 		cursor: 'pointer'
 	},
 	heading: {
-		textAlign: 'center',
-		color: 'orange'
-	}
+		textAlign: 'center'
+	},
+	themeButton: {}
 }));
 
 const LoginPage = () => {
 	const classes = useStyles();
 	const history = useHistory();
 	const { themeState, dispatch } = useContext(ThemeContext);
+
+	const handleClick = () => {
+		dispatch(UpdateThemeDark());
+	};
+	const handleClick1 = () => {
+		dispatch(UpdateThemeLight());
+	};
+
 	return (
-		<div>
-			<h1 style={themeState.theme}>Login to see latest card details</h1>
-			<button onClick={() => dispatch(UpdateThemeDark())}>Change Theme</button>
+		<div style={themeState.active == 'dark' ? themeState.dark : themeState.light} className={classes.mainDiv}>
+			<h1 className={classes.heading}>Login to see latest card details</h1>
+			<Button
+				onClick={handleClick}
+				className={classes.themeButton}
+				style={themeState.active == 'dark' ? themeState.dark.button : themeState.light.button}
+			>
+				light theme on
+			</Button>
+			<Button
+				onClick={handleClick1}
+				className={classes.themeButton}
+				style={themeState.active == 'dark' ? themeState.light.button : themeState.dark.button}
+			>
+				light theme off
+			</Button>
 			<div className={classes.mainContainer}>
 				<Formik
 					initialValues={{
@@ -100,7 +123,12 @@ const LoginPage = () => {
 								/>
 							</div>
 
-							<Button type="submit" variant="outlined" className={classes.continueButton}>
+							<Button
+								type="submit"
+								variant="contained"
+								style={themeState.active == 'dark' ? themeState.dark.button : themeState.light.button}
+								className={classes.continueButton}
+							>
 								LOGIN
 							</Button>
 						</Form>

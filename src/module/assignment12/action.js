@@ -1,4 +1,4 @@
-import { APPROVED, UPDATE_LIGHT, UPDATE_DARK } from '../../utils/actionNames';
+import { APPROVED, UPDATE_ACTIVE_THEME } from '../../utils/actionNames';
 
 export const UpdateUserList = (result) => {
 	return {
@@ -9,14 +9,14 @@ export const UpdateUserList = (result) => {
 
 export const UpdateThemeDark = () => {
 	return {
-		type: UPDATE_DARK,
-		payload: '1px solid red'
+		type: UPDATE_ACTIVE_THEME,
+		payload: 'dark'
 	};
 };
 
 export const UpdateThemeLight = () => {
 	return {
-		type: UPDATE_LIGHT,
-		payload: '1px solid green'
+		type: UPDATE_ACTIVE_THEME,
+		payload: 'light'
 	};
 };
